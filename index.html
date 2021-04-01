@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+
+function randomColor() {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    return "rgb(" + x + "," + y + "," + z + ")";
+}
+
+function changeColor() {
+  var backgroundColors = [
+    document.getElementById('keyboard-rgb'),
+    document.getElementById('keyboard-rgb-1'),
+    document.getElementById('mouse-wheel-rgb')
+  ];
+  var borderColors = [
+    document.getElementById('keyboard-mat-rgb'),
+    document.getElementById('computer-rgb')
+  ];
+  var color = randomColor();
+  backgroundColors.forEach(item => item.style.background = color);
+  borderColors.forEach(item => item.style.borderColor = color);
+}
+
+window.setInterval(function(){
+  changeColor();
+}, 800);
+
+
+</script>
+
+
+<style>
+body {
+  background: #efe1fe;
+  font-family: 'Roboto', sans-serif;
+  color: #816fee;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.wrapper {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.table {
+  margin: auto;
+  display: block;
+  width: 600px;
+  height: 200px;
+  background: #cdb5e8;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.about {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.links {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.links span {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.table-left {
+  position: relative;
+  float: left;
+  width: 80%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+}
+
+.table-right {
+  position: relative;
+  float: right;
+  width: 20%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+}
+
+.keyboard-mat {
+  position: relative;
+  background: rgb(182,172,241);
+  background: linear-gradient(90deg, rgba(182,172,241,1) 0%,
+    rgba(155,143,230,1) 35%, rgba(129,111,241,1) 100%);
+  width: 80%;
+  height: 50%;
+  top: 40%;
+  left: 10%;
+  border-radius: 5px;
+  z-index: 1;
+  border: 2px solid;
+}
+
+.keyboard {
+  position: relative;
+  background: #bd91ef;
+  width: 40%;
+  height: 50%;
+  top: 25%;
+  left: 20%;
+  border-radius: 5px;
+  z-index: 2;
+  float: left;
+}
+
+.keyset-row-1 {
+  position: relative;
+  background: #ffffff;
+  width: 90%;
+  height: 10%;
+  top: 15%;
+  left: 5%;
+  border-radius: 5px;
+  z-index: 2;
+  opacity: 0.5;
+}
+
+.keyset-row-2 {
+  position: relative;
+  background: white;
+  width: 90%;
+  height: 50%;
+  top: 25%;
+  left: 5%;
+  border-radius: 5px;
+  z-index: 3;
+  opacity: 0.5;
+}
+
+/* start keyboard wire */ 
+/*
+.keyboard-wire {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+}
+
+.keyboard-wire-line-1 {
+    background: linear-gradient(45deg, transparent, transparent 49%, white 49%, transparent 51%);
+}
+.keyboard-wire-line-2 {
+    background: linear-gradient(-45deg, transparent, transparent 49%, white 49%, transparent 51%);
+}
+
+.keyboard-wire-line {
+    position: absolute;
+    height: 10px;
+    width: 200%;
+    transform: translate(-25%) scale(0.5);
+    background-size: 20px 20px;
+}
+*/
+/* end keyboard wire */
+
+.mouse {
+  position: relative;
+  background: #bd91ef;
+  width: 7%;
+  height: 35%;
+  top: 30%;
+  left: 75%;
+  border-radius: 5px;
+  z-index: 2;
+  transform: rotate(-20deg);
+}
+
+.mouse-wheel {
+  position: relative;
+  background: #ffffff;
+  width: 12%;
+  height: 28%;
+  top: 15%;
+  left: 45%;
+  border-radius: 5px;
+  z-index: 3;
+}
+
+/* Monitor */
+.monitor-front {
+  position: relative;
+  top: -85px;
+  left: 35px;
+  width: 400px; 
+  height: 20px;  
+  border: solid 6px #bd91ef;
+  border-color: #bd91ef transparent white transparent;
+  border-radius: 50%/100px 100px 0 0;
+  transform: rotate(0deg);
+  background: #bd91ef;
+  z-index: 10;
+  /* https://codersblock.com/blog/creating-glow-effects-with-css/  */
+  box-shadow:
+    inset 0 0 50px white,
+    inset 20px 0 80px #bd91ef,   
+    inset -20px 0 80px #bd91ef,  
+    inset 20px 0 300px #bd91ef,  
+    inset -20px 0 300px #bd91ef,
+    0 0 50px white,
+    -10px 0 80px #bd91ef,
+    10px 0 80px #bd91ef;
+}
+
+.monitor-stand {
+  position: relative;
+  top: -350px;
+  left: 35px;
+  width: 400px; 
+  height: 100px;  
+  border: solid 6px #ffffff;
+  border-color: transparent transparent white transparent;
+  border-radius: 50%/0 0 100px 100px;
+  transform: rotate(0deg);
+  z-index: 10000;
+}
+
+.computer {
+  position: relative;
+  background: #e0cdf6;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  right: 15%;
+  border-radius: 5px;
+  z-index: 3;
+  float: right;
+  border: 2px solid;
+}
+
+/* End monitor */
+
+/* Computer */
+.power {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  right: 0;
+  margin: 5px;
+}
+
+/* Linksss */
+/* unvisited link */
+a:link {
+  color: #816ff1;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: #aca0fa;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: #ce4be1;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: #df7eee;
+  text-decoration: none;
+}
+</style>
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+   <div class="wrapper">
+    <div class="about">
+    └(=^‥^=)┐ *~* Spicy Purrito's Station *~* └(=^‥^=)┐
+    </div>
+    <div class="name">
+    a.k.a Xiuli Jakui Rizon Shen
+    </div>
+   <div class="table">
+     <div class="table-left">
+      <div class="keyboard-mat" id="keyboard-mat-rgb">
+       <!-- TODO: Cleanup keyboard wire-->
+       <!--<div class="keyboard-wire">
+         <div class="keyboard-wire-line keyboard-wire-line-1"></div>
+         <div class="keyboard-wire-line keyboard-wire-line-2"></div>
+       </div>-->
+       <div class="keyboard">
+          <div class="keyset-row-1" id="keyboard-rgb-1"></div>
+          <div class="keyset-row-2" id="keyboard-rgb"></div>
+       </div>
+       <div class="mouse">
+         <div class="mouse-wheel" id="mouse-wheel-rgb"></div>
+       </div>
+        <!-- TODO: make cute -->
+     </div>
+      <div class="monitor">
+       <div class="monitor-front"></div>
+       <div class="monitor-stand"></div>
+     </div>
+     </div>
+     <div class="table-right">
+      <div class="computer" id="computer-rgb">
+        <div class="power"></div>
+        <div class="usb1"></div>
+        <div class="usb2"></div>
+      </div>
+     </div>
+     
+     </div>
+   <div class="links">
+     <span>
+       <a target="_blank" href="https://www.linkedin.com/in/xiuli-shen/">LinkedIn</a>
+      </span> |
+     <span>
+       <a target="_blank" href="https://www.instagram.com/spicypurrito/">Instagram</a>
+     </span> |
+     <span>
+       <a target="_blank" href="https://twitter.com/spicyyypurrito">Twitter</a>
+     </span> |
+     <span>
+       <a target="_blank" href="https://www.twitch.tv/spicyyypurrito">Twitch</a>
+     </span>
+   </div>
+  </div>
+</body>
+
+</body>
+</html>
